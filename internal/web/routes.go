@@ -1,8 +1,14 @@
 package web
 
-import "net/http"
+import (
+	"net/http"
 
-func RegisterRoutes(mux *http.ServeMux) {
-	mux.HandleFunc("/", dashboardHandler)
-	mux.HandleFunc("/partials/stats", statsHandler)
+	"github.com/glhou/logm/internal/core"
+	"github.com/glhou/logm/internal/web/api"
+)
+
+func RegisterRoutes(mux *http.ServeMux, app *core.App) {
+	mux.HandleFunc("/", dashboardHandler(app))
+	mux.HandleFunc("/partials/stats", statsHandler(app))
+	api.RegisterRoutes(mux, app)
 }

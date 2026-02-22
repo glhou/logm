@@ -1,0 +1,11 @@
+package api
+
+import (
+	"net/http"
+
+	"github.com/glhou/logm/internal/web"
+)
+
+func RegisterRoutes(mux *http.ServeMux, app *web.App) {
+	mux.HandleFunc("/api/log", newLogHandler(app))
+}
