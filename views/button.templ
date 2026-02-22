@@ -1,0 +1,8 @@
+package views
+
+templ Button(color ColorVariant, text string, attrs templ.Attributes) {
+	{{ base := "text-white px-4 py-2 rounded transition " }}
+	<button type="button" class={ base + GetColorClass(color) } { attrs... }>
+		{ text }
+	</button>
+}

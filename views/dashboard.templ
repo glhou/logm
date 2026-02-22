@@ -1,0 +1,26 @@
+package views
+
+templ dashboard() {
+	@Card("Logm", nil) {
+		<p class="text-gray-600 mb-4">Log management service</p>
+		@Button(PrimaryColor, "Load Stats",
+			templ.Attributes{
+				"hx-get":    "/partials/stats",
+				"hx-target": "#stats",
+				"hx-swap":   "innerHTML",
+			})
+		<div id="stats" class="mt-4"></div>
+	}
+	@Card("", templ.Attributes{"x-data": "{open:false}"}) {
+		@Button(SecondaryColor, "Toggle Pannel", templ.Attributes{
+			"@click": "open = !open",
+		})
+		<div x-show="open" class="mt-4 text-gray-700">
+			Alpine is working
+		</div>
+	}
+}
+
+templ Dashboard() {
+	@Layout("Logm Dashboard", dashboard())
+}

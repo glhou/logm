@@ -1,0 +1,39 @@
+package views
+
+templ header(title string) {
+	<meta charset="UTF-8"/>
+	<title>{ title }</title>
+	<!-- HTMX -->
+	<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+	<!-- Alpine -->
+	<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+      body {
+          font-family: sans-serif;
+          margin: 40px;
+          background: #f9fafb;
+      }
+      .card {
+          background: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+          margin-bottom: 20px;
+      }
+    </style>
+}
+
+templ Layout(title string, content templ.Component) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			@header(title)
+		</head>
+		<body class="bg-gray-100 min-h-screen p-10">
+			<div class="max-w-5xl mx-auto">
+				@content
+			</div>
+		</body>
+	</html>
+}
